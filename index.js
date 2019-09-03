@@ -1,7 +1,11 @@
 require("dotenv").config();
 const fetch = require("node-fetch"),
-  moment = require("moment"),
+  moment = require("moment-timezone");
+
+const config = require("./config"),
   { SENDGRID_STATUSES, SENDGRID_ERROR_STATUSES } = require("./constants");
+
+const timezone = process.env.TIMEZONE || config.TIMEZONE;
 
 async function processArray(array) {
   array.forEach(async email => {
@@ -34,7 +38,9 @@ async function processArray(array) {
             },
             {
               type: "mrkdwn",
-              text: `*Reported Time:*\n${moment().format("DD/MM/YYYY hh:mm a")}`
+              text: `*Reported Time:*\n${moment()
+                .tz(timezone)
+                .format("DD/MM/YYYY hh:mm a")}`
             },
             {
               type: "mrkdwn",
