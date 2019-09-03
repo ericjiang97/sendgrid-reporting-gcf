@@ -1,0 +1,17 @@
+{
+  "name": "sendgrid-webhook-function-sandbox",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:lorderikir/sendgrid-webhook-function-sandbox.git",
+  "author": "Eric <eric.jiang@monash.edu>",
+  "license": "MIT",
+  "scripts": {
+    "deploy": "gcloud functions deploy sendgridWebhook --entry-point sendgrid --runtime nodejs10 --region asia-east2 --memory 128MB --trigger-http --env-vars-file ./.env.yaml"
+  },
+  "devDependencies": {},
+  "dependencies": {
+    "dotenv": "^8.1.0",
+    "moment": "^2.24.0",
+    "node-fetch": "^2.6.0"
+  }
+}
