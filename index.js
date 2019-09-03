@@ -1,10 +1,16 @@
 require("dotenv").config();
-const fetch = require("node-fetch");
-const moment = require("moment");
+const fetch = require("node-fetch"),
+  moment = require("moment"),
+  { SENDGRID_STATUSES, SENDGRID_ERROR_STATUSES } = require("./constants");
 
 async function processArray(array) {
-  const SENDGRID_ERROR_STATUSES = ["bounce", "dropped"];
   array.forEach(async email => {
+    if (email.event === SENDGRID_STATUSES.PROCESSED) {
+      // email processed by sendgrid
+    }
+    if (email.event === SENDGRID_STATUSES.DELIVERED) {
+      // email sent by sendgrid
+    }
     if (SENDGRID_ERROR_STATUSES.includes(email.event)) {
       const SLACK_MESSAGE = [
         {
@@ -48,8 +54,6 @@ async function processArray(array) {
         }
       ];
       const body = JSON.stringify({ blocks: SLACK_MESSAGE });
-
-      console.log(body);
       await fetch(process.env.SLACK_REQUEST_URI, {
         method: "POST",
         body
