@@ -59,7 +59,10 @@ async function processArray(array) {
           type: "divider"
         }
       ];
-      const body = JSON.stringify({ blocks: SLACK_MESSAGE });
+      const body = JSON.stringify({
+        blocks: SLACK_MESSAGE,
+        text: `SendGrid Error Report | *Target Email:* ${email.email} | *Event Status* ${email.event}`
+      });
       await fetch(process.env.SLACK_REQUEST_URI, {
         method: "POST",
         body
