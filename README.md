@@ -16,6 +16,10 @@ You will need the following:
 SLACK_REQUEST_URI= #insert slack request URI here
 TIMEZONE= #defaults to Australia/Melbourne (in config.js)
 ```
+## Slack Integration
+To integrate into Slack, we use an App Webhook.
+
+![](/images/slack_message.png)
 
 # LICENSE
 
