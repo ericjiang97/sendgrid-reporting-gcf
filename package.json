@@ -11,7 +11,7 @@
   "devDependencies": {},
   "dependencies": {
     "dotenv": "^8.1.0",
-    "moment-timezone": "^0.5.26",
+    "moment-timezone": "^0.5.35",
     "node-fetch": "^2.6.0"
   }
 }
